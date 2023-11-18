@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #3498db, #5b9cc3);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        #numberDisplay {
+            font-size: 72px;
+            margin: 20px 0;
+            color: #333;
+            background-color: #f4f4f4;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        #generateNumberBtn {
+            font-size: 24px;
+            padding: 15px 30px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #generateNumberBtn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Random Number Generator</h1>
+        <div id="numberDisplay"></div>
+        <button id="generateNumberBtn">Generate Random Number</button>
+    </div>
+
+    <script>
+        // Function to generate a random number
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * 100) + 1; // Generates a random number between 1 and 100
+        }
+
+        // Add click event listener to the button using DOM methods
+        var generateNumberBtn = document.getElementById('generateNumberBtn');
+        var numberDisplayDiv = document.getElementById('numberDisplay');
+
+        generateNumberBtn.addEventListener('click', function() {
+            var randomNum = generateRandomNumber();
+            numberDisplayDiv.textContent = randomNum;
+        });
+
+
+       // Create and append the footer
+       var footer = document.createElement("div");
+        footer.id = "footer";
+        footer.className = "footer";
+        footer.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        footer.style.color = 'white';
+        footer.style.padding = '20px';
+        footer.style.textAlign = 'center';
+        footer.style.position = 'absolute';
+        footer.style.bottom = '0px';
+        footer.style.width = '96%';
+        footer.style.margin = '10px';
+
+
+        footer.innerHTML = "© 2023 Dom Project By Shubham. All Rights Reserved.";
+        document.body.appendChild(footer);
+    </script>
+</body>
+
+</html>

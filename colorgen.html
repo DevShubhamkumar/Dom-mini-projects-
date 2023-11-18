@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            transition: background 0.5s;
+        }
+
+        #colorDisplay {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        #generateColorBtn {
+            font-size: 24px;
+            padding: 15px 30px;
+            background: #ff7e5f;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        #generateColorBtn:hover {
+            background: #ff614d;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="colorDisplay">Color: #FFFFFF</div>
+        <button id="generateColorBtn">Generate Random Color</button>
+    </div>
+
+    <script>
+
+// Navbar
+var navbar = document.createElement("div");
+navbar.id = "navbar";
+navbar.className = "navbar";
+document.body.appendChild(navbar);
+navbar.style.padding = '30px';
+navbar.style.position = 'fixed';
+navbar.style.top = '0px';
+navbar.style.width= '95%';
+navbar.style.margin= '10px';
+navbar.style.backgroundColor = 'rgba(255, 78, 0, 1)';
+
+// Add styles to the head section using DOM methods
+var styleElement = document.createElement("style");
+styleElement.textContent = `
+    .navbar {
+        overflow: hidden;
+        background-color: #C0C0C0;
+        padding: 15px;
+        text-align: center;
+        border: 4px solid #F5F5F5;
+        border-radius: 25px;
+    }
+
+    .content,
+    .products {
+        padding: 10px;
+        text-align: center;
+    }
+`;
+
+document.head.appendChild(styleElement);
+
+// Array of button names
+var buttonNames = ["Index", "numgen", "colorgen", "calculator"];
+
+// Create and style buttons using DOM methods
+for (var i = 0; i < buttonNames.length; i++) {
+    var button = document.createElement("a");
+    button.textContent = buttonNames[i];
+    button.style.backgroundColor = '#778899';
+    button.style.color = "white";
+    button.style.border = "3px solid #1443F";
+    button.style.borderRadius = "10px";
+    button.style.padding = "15px 20px";
+    button.style.margin = "0 20px";
+    button.style.fontFamily = "Arial, sans-serif";
+    button.style.cursor = "pointer";
+    button.style.transition = "0.5s ease-in-out";
+    button.style.textDecoration = "none";
+
+    // Add hover effect using event listeners
+    button.addEventListener("mouseover", function () {
+        this.style.backgroundColor = "white";
+        this.style.color = "red";
+        this.style.border = "10px solid rgba(104, 117, 255, 1)";
+    });
+
+    button.addEventListener("mouseout", function () {
+        this.style.backgroundColor = '#778899';
+        this.style.color = "white";
+        this.style.border = "none";
+    });
+
+    let myatt = document.createAttribute('href');
+    myatt.value = "./" + buttonNames[i] + ".html";
+    button.setAttributeNode(myatt);
+    navbar.appendChild(button);
+}
+
+
+        // Function to generate a random color
+        function generateRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Function to update the color display and background
+        function updateColor() {
+            var randomColor = generateRandomColor();
+            document.body.style.backgroundColor = randomColor;
+            document.getElementById('colorDisplay').textContent = `Color: ${randomColor}`;
+        }
+
+        // Add click event listener to the button using DOM methods
+        var generateColorBtn = document.getElementById('generateColorBtn');
+        generateColorBtn.addEventListener('click', updateColor);
+
+        // Create and append the footer
+        var footer = document.createElement("div");
+        footer.id = "footer";
+        footer.className = "footer";
+        footer.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        footer.style.color = 'white';
+        footer.style.padding = '20px';
+        footer.style.textAlign = 'center';
+        footer.style.position = 'absolute';
+        footer.style.bottom = '0px';
+        footer.style.width = '96%';
+        footer.style.margin = '10px';
+
+
+        footer.innerHTML = "© 2023 Dom Project By Shubham. All Rights Reserved.";
+        document.body.appendChild(footer);
+    </script>
+</body>
+
+</html>

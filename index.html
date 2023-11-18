@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Create and append div elements with attributes using DOM methods
+        var body = document.body;
+
+        // Navbar
+        var navbar = document.createElement("div");
+        navbar.id = "navbar";
+        navbar.className = "navbar";
+        body.appendChild(navbar);
+        navbar.style.padding = '30px';
+        navbar.style.backgroundColor = 'rgba(255, 78, 0, 1)';
+
+        // Content
+        var content = document.createElement("div");
+        content.id = "aboutUs";
+        content.className = "content";
+        body.appendChild(content);
+
+        // Background Image
+        var backgroundimg = document.createElement("div");
+        backgroundimg.id = "img";
+        backgroundimg.className = "background-image";
+        body.appendChild(backgroundimg);
+        backgroundimg.style.backgroundImage = "url('background.avif')"; 
+        backgroundimg.style.height = '600px';
+        backgroundimg.style.width = '100%';
+        backgroundimg.style.width = '100%';
+        backgroundimg.style.borderRadius = '10px';
+        backgroundimg.style.backgroundAttachment = 'fixed';
+
+        var borderLinkTexts = ["Link to Calculator", "Link to Color Generator", "Link to Number Generator"];
+        var borderLinks = ["./calculator.html", "./colorgen.html", "./numgen.html"];
+
+        for (var i = 0; i < 3; i++) {
+            var borderDiv = document.createElement("div");
+            borderDiv.className = "border-div";
+            borderDiv.style.margin = '5%';
+            borderDiv.style.backgroundColor = '#333f';
+
+            // Create a heading for each border
+            var borderHeading = document.createElement("h3");
+            if (i === 0) {
+                borderHeading.textContent = "Calculator";
+            } else if (i === 1) {
+                borderHeading.textContent = "Color Generator";
+            } else if (i === 2) {
+                borderHeading.textContent = "Num Generator";
+            }
+            borderHeading.className = "border-heading";
+            borderHeading.style.color = 'red';
+            borderHeading.style.fontFamily = 'Arial, Helvetica, sans-serif';
+            borderHeading.style.backgroundColor = 'white';
+            borderHeading.style.borderRadius = '10px';
+
+            // Create a link in the div with distinct links
+            var linkInDiv = document.createElement("a");
+            linkInDiv.textContent = borderLinkTexts[i];
+            linkInDiv.className = "link-in-div";
+            linkInDiv.href = borderLinks[i];
+
+            // Append the heading and link to the borderDiv
+            borderDiv.appendChild(borderHeading);
+            borderDiv.appendChild(linkInDiv);
+
+            // Append the borderDiv to the backgroundimg
+            backgroundimg.appendChild(borderDiv);
+        }
+
+        // Contact Form
+        var contactForm = document.createElement("div");
+        contactForm.id = "contactForm";
+        contactForm.className = "contact-form";
+        body.appendChild(contactForm);
+
+        // Google Map
+        var googleMap = document.createElement("div");
+        googleMap.id = "googleMap";
+        googleMap.className = "map";
+        body.appendChild(googleMap);
+
+        // Footer
+        var footer = document.createElement("div");
+        footer.id = "footer";
+        footer.className = "footer";
+        body.appendChild(footer);
+        footer.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        footer.style.color = 'white';
+        footer.style.padding = '20px';
+        footer.style.margin = '10px';
+        footer.style.width = '96%';
+        footer.style.textAlign = 'center';
+
+        footer.innerHTML = "© 2023 Dom Project By Shubham. All Rights Reserved.";
+
+        // Add styles to the head section using DOM methods
+        var styleElement = document.createElement("style");
+        styleElement.textContent = `
+            .navbar {
+                overflow: hidden;
+                background-color: #C0C0C0;
+                padding: 15px;
+                text-align: center;
+                border: 4px solid #F5F5F5;
+                border-radius: 25px;
+            }
+
+            .content,
+            .products {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .border-div {
+                text-align: center;
+                border: 5px solid #ff4500; /* Larger and more attractive border */
+                border-radius: 15px; /* Rounded corners */
+                padding: 30px; /* More padding */
+                margin: 100px;
+                height: 200px;
+                width: 200px;
+            }
+
+            .border-heading {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .link-in-div {
+                text-decoration: none;
+                color: #007bff;
+                font-weight: bold;
+            }
+
+            .link-in-div:hover {
+                color: #ff4500; /* Change link color on hover */
+            }
+
+            .background-image {
+                background-size: cover;
+                background-repeat: no-repeat;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 300px;
+            }
+        `;
+
+        document.head.appendChild(styleElement);
+
+        // Array of button names
+        var buttonNames = ["Index", "numgen", "colorgen", "calculator"];
+
+        // Create and style buttons using DOM methods
+        for (var i = 0; i < buttonNames.length; i++) {
+            var button = document.createElement("a");
+            button.textContent = buttonNames[i];
+            button.style.backgroundColor = '#778899';
+            button.style.color = "white";
+            button.style.border = "3px solid #1443F";
+            button.style.borderRadius = "10px";
+            button.style.padding = "15px 20px";
+            button.style.margin = "0 20px";
+            button.style.fontFamily = "Arial, sans-serif";
+            button.style.cursor = "pointer";
+            button.style.transition = "0.5s ease-in-out";
+            button.style.textDecoration = "none";
+
+            // Add hover effect using event listeners
+            button.addEventListener("mouseover", function () {
+                this.style.backgroundColor = "white";
+                this.style.color = "red";
+                this.style.border = "10px solid rgba(104, 117, 255, 1)";
+            });
+
+            button.addEventListener("mouseout", function () {
+                this.style.backgroundColor = '#778899';
+                this.style.color = "white";
+                this.style.border = "none";
+            });
+
+            let myatt = document.createAttribute('href');
+            myatt.value = "./" + buttonNames[i] + ".html";
+            button.setAttributeNode(myatt);
+            navbar.appendChild(button);
+        }
+
+    </script>
+</body>
+</html>
